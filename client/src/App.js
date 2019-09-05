@@ -1,13 +1,34 @@
 import React from 'react';
+import axios from 'axios';
+import MapApp from './components/maps';
 
 import './App.css';
 
 class App extends React.Component {
+	state = {
+		search: "",
+		results: []
+	};
+	componentDidMount() {
+		axios.get(`https://api.betterdoctor.com/2016-03-01/doctors?specialty_uid=psychiatrist&location=ma-boston&skip=0&limit=10&user_key=c2bf38244d2c83668b55c0be214bbbab`
+		).then((result) => {
+			console.log(result.data.data)
+			// alert(JSON.stringify(result.data), null, 2)
+			this.setState({
+				results: result.data.data
+			})
+		})
+	}
+
+
+
+
+
 	render() {
 		return (
-			<div classNameName="App">
+			<div className="App">
 				<header id="home">
-					<div className="bg-img" style={{ backgroundImage: "url('./img/mainBackground.jpg')" }}>
+					<div className="bg-img" style={{ backgroundImage: "url('./img/view.jpg')" }}>
 						<div className="overlay"></div>
 					</div>
 					<nav id="nav" className="navbar nav-transparent">
@@ -15,8 +36,8 @@ class App extends React.Component {
 							<div className="navbar-header">
 								<div className="navbar-brand">
 									<a href="index.html">
-										<img className="logo" src="img/test brain.png" alt="logo" />
-										<img className="logo-alt" src="img/test brain.png" alt="logo" />
+										<img className="logo" src="img/holding-hands.png" alt="logo" />
+
 									</a>
 								</div>
 
@@ -31,11 +52,8 @@ class App extends React.Component {
 								<li><a href="#portfolio">Portfolio</a></li>
 								<li><a href="#service">Services</a></li>
 								<li><a href="#team">Team</a></li>
-								<li className="has-dropdown"><a href="#blog">Blog</a>
-									<ul className="dropdown">
-										<li><a href="blog-single.html">blog post</a></li>
-									</ul>
-								</li>
+								<li><a href="#blog">Blog</a></li>
+
 								<li><a href="#contact">Contact</a></li>
 							</ul>
 
@@ -48,9 +66,7 @@ class App extends React.Component {
 								<div className="col-md-10 col-md-offset-1">
 									<div className="home-content">
 										<h1 className="white-text">PRYIA</h1>
-										<p className="white-text">We are a community that is trying to help people take control of there life issues. Our purpose is to help those with mental issues live there best life </p>
-										<button className="white-btn">Get Started!</button>
-
+										<h3 className="white-text">A community that is trying to help people take control of there life's. </h3>
 									</div>
 								</div>
 
@@ -72,9 +88,9 @@ class App extends React.Component {
 							<div className="col-md-4">
 								<div className="about">
 									<i className="fa fa-cogs"></i>
-									<h3>Fully Customizible</h3>
-									<p>We are part of the generation that text , slacks , post and that accessibility is everything. With the evolution of social media and it’s popularity being so visible , the pressure can be too much.</p>
-									<a href="#">Read more</a>
+									<h3>24hr Support Team</h3>
+									<p>Talking with one of our life coaches anytime of the day  </p>
+									{/* <a href="#">Read more</a> */}
 								</div>
 							</div>
 
@@ -82,17 +98,17 @@ class App extends React.Component {
 								<div className="about">
 									<i className="fa fa-magic"></i>
 									<h3>Awesome Features</h3>
-									<p>Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero sit amet.</p>
-									<a href="#">Read more</a>
+									<p>Access to our network of Doctors that are closest to you using google maps.</p>
+									{/* <a href="#">Read more</a> */}
 								</div>
 							</div>
 
 							<div className="col-md-4">
 								<div className="about">
 									<i className="fa fa-mobile"></i>
-									<h3>Fully Responsive</h3>
-									<p>Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero sit amet.</p>
-									<a href="#">Read more</a>
+									<h3>Chat Feature</h3>
+									<p> We live in a time where you cant go anywhere with out your phone. Now let it help you take control of your life. </p>
+									{/* <a href="#">Read more</a> */}
 								</div>
 							</div>
 
@@ -114,45 +130,45 @@ class App extends React.Component {
 							</div>
 
 							<div className="col-md-4 col-xs-6 work">
-								<img className="img-responsive" src="./img/work1.jpg" alt="" />
+								<img className="img-responsive" src="./img/meetingofminds.jpg" alt="" />
 								<div className="overlay"></div>
 								<div className="work-content">
-									<span>Category</span>
-									<h3>Lorem ipsum dolor</h3>
+									<span>Team Huddle </span>
+									<h3>Meeting of the minds</h3>
 									<div className="work-link">
-										<a href="#"><i className="fa fa-external-link"></i></a>
-										<a className="lightbox" href="./img/work1.jpg"><i className="fa fa-search"></i></a>
+										<a href="https://whatsupyukon.com/events/Drop-in%20Recovery%20Group%20Meetings/"><i className="fa fa-external-link"></i></a>
+										<a className="lightbox" href="./img/meetingofminds.jpg"><i className="fa fa-search"></i></a>
 									</div>
 								</div>
 							</div>
 
 							<div className="col-md-4 col-xs-6 work">
-								<img className="img-responsive" src="./img/work2.jpg" alt="" />
+								<img className="img-responsive" src="./img/helpinghands.jpg" alt="" />
 								<div className="overlay"></div>
 								<div className="work-content">
-									<span>Category</span>
-									<h3>Lorem ipsum dolor</h3>
+									<span>Life Coach Meetings </span>
+									<h3>Helping Where We Can </h3>
 									<div className="work-link">
-										<a href="#"><i className="fa fa-external-link"></i></a>
-										<a className="lightbox" href="./img/work2.jpg"><i className="fa fa-search"></i></a>
+										<a href="https://metro.co.uk/2018/05/17/things-are-improving-immensely-heres-what-happens-at-a-mental-health-support-group-7535222/"><i className="fa fa-external-link"></i></a>
+										<a className="lightbox" href="./img/helpinghands.jpg"><i className="fa fa-search"></i></a>
 									</div>
 								</div>
 							</div>
 
 							<div className="col-md-4 col-xs-6 work">
-								<img className="img-responsive" src="./img/work3.jpg" alt="" />
+								<img className="img-responsive" src="./img/together.jpg" alt="" />
 								<div className="overlay"></div>
 								<div className="work-content">
-									<span>Category</span>
-									<h3>Lorem ipsum dolor</h3>
+									<span>Together</span>
+									<h3>Never Alone</h3>
 									<div className="work-link">
-										<a href="#"><i className="fa fa-external-link"></i></a>
-										<a className="lightbox" href="./img/work3.jpg"><i className="fa fa-search"></i></a>
+										<a href="https://www.nami.org/Personal-Stories/You-Are-Not-Alone"><i className="fa fa-external-link"></i></a>
+										<a className="lightbox" href="./img/together.jpg"><i className="fa fa-search"></i></a>
 									</div>
 								</div>
 							</div>
 
-							<div className="col-md-4 col-xs-6 work">
+							{/* <div className="col-md-4 col-xs-6 work">
 								<img className="img-responsive" src="./img/work4.jpg" alt="" />
 								<div className="overlay"></div>
 								<div className="work-content">
@@ -163,21 +179,21 @@ class App extends React.Component {
 										<a className="lightbox" href="./img/work4.jpg"><i className="fa fa-search"></i></a>
 									</div>
 								</div>
-							</div>
-							<div className="col-md-4 col-xs-6 work">
-								<img className="img-responsive" src="./img/work5.jpg" alt="" />
+							</div> */}
+							{/* <div className="col-md-4 col-xs-6 work">
+								<img className="img-responsive" src="./img/park.jpg" alt="" />
 								<div className="overlay"></div>
 								<div className="work-content">
 									<span>Category</span>
 									<h3>Lorem ipsum dolor</h3>
 									<div className="work-link">
 										<a href="#"><i className="fa fa-external-link"></i></a>
-										<a className="lightbox" href="./img/work5.jpg"><i className="fa fa-search"></i></a>
+										<a className="lightbox" href="./img/park.jpg"><i className="fa fa-search"></i></a>
 									</div>
 								</div>
-							</div>
+							</div> */}
 
-							<div className="col-md-4 col-xs-6 work">
+							{/* <div className="col-md-4 col-xs-6 work">
 								<img className="img-responsive" src="./img/work6.jpg" alt="" />
 								<div className="overlay"></div>
 								<div className="work-content">
@@ -188,7 +204,7 @@ class App extends React.Component {
 										<a className="lightbox" href="./img/work6.jpg"><i className="fa fa-search"></i></a>
 									</div>
 								</div>
-							</div>
+							</div> */}
 
 						</div>
 
@@ -209,15 +225,15 @@ class App extends React.Component {
 							<div className="col-md-4 col-sm-6">
 								<div className="service">
 									<i className="fa fa-diamond"></i>
-									<h3>App Development</h3>
-									<p>Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero.</p>
+									<h3>Google Maps</h3>
+									<p>Locations of Doctors under of umbrella </p>
 								</div>
 							</div>
 
 							<div className="col-md-4 col-sm-6">
 								<div className="service">
 									<i className="fa fa-rocket"></i>
-									<h3>Graphic Design</h3>
+									<h3>Updates </h3>
 									<p>Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero.</p>
 								</div>
 							</div>
@@ -230,6 +246,8 @@ class App extends React.Component {
 								</div>
 							</div>
 
+
+							{/* 
 							<div className="col-md-4 col-sm-6">
 								<div className="service">
 									<i className="fa fa-diamond"></i>
@@ -241,7 +259,7 @@ class App extends React.Component {
 							<div className="col-md-4 col-sm-6">
 								<div className="service">
 									<i className="fa fa-pencil"></i>
-									<h3>Awesome Support</h3>
+									<h3>mas</h3>
 									<p>Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero.</p>
 								</div>
 							</div>
@@ -252,7 +270,7 @@ class App extends React.Component {
 									<h3>Brand Design</h3>
 									<p>Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero.</p>
 								</div>
-							</div>
+							</div> */}
 
 						</div>
 
@@ -483,8 +501,21 @@ class App extends React.Component {
 				</div>
 
 				<div id="team" className="section md-padding">
+					<MapApp />
+					<div className="list">
+						<ul>{this.state.results.map(result =>
+							<li>{result.profile.first_name + " " + result.profile.last_name};
+
+
+							</li>)}
+
+						</ul>
+					</div>
+
 
 					<div className="container">
+
+
 
 						<div className="row">
 
@@ -495,18 +526,18 @@ class App extends React.Component {
 							<div className="col-sm-4">
 								<div className="team">
 									<div className="team-img">
-										<img className="img-responsive" src="./img/team1.jpg" alt="" />
-										<div className="overlay">
+										<img className="img-responsive" src="./img/Dubois.jpg" alt="" />
+										{/* <div className="overlay">
 											<div className="team-social">
 												<a href="#"><i className="fa fa-facebook"></i></a>
 												<a href="#"><i className="fa fa-google-plus"></i></a>
 												<a href="#"><i className="fa fa-twitter"></i></a>
 											</div>
-										</div>
+										</div> */}
 									</div>
 									<div className="team-content">
-										<h3>John Doe</h3>
-										<span>Web Designer</span>
+										<h3>W. E. B. Du Bois</h3>
+										<span>CFO</span>
 									</div>
 								</div>
 							</div>
@@ -514,18 +545,18 @@ class App extends React.Component {
 							<div className="col-sm-4">
 								<div className="team">
 									<div className="team-img">
-										<img className="img-responsive" src="./img/team2.jpg" alt="" />
+										<img className="img-responsive" src="./img/CFO.jpg" alt="" />
 										<div className="overlay">
-											<div className="team-social">
+											{/* <div className="team-social">
 												<a href="#"><i className="fa fa-facebook"></i></a>
 												<a href="#"><i className="fa fa-google-plus"></i></a>
 												<a href="#"><i className="fa fa-twitter"></i></a>
-											</div>
+											</div> */}
 										</div>
 									</div>
 									<div className="team-content">
-										<h3>John Doe</h3>
-										<span>Web Designer</span>
+										<h3>Eddie Claude</h3>
+										<span>CEO</span>
 									</div>
 								</div>
 							</div>
@@ -533,18 +564,18 @@ class App extends React.Component {
 							<div className="col-sm-4">
 								<div className="team">
 									<div className="team-img">
-										<img className="img-responsive" src="./img/team3.jpg" alt="" />
-										<div className="overlay">
+										<img className="img-responsive" src="./img/cto.jpg" alt="" />
+										{/* <div className="overlay">
 											<div className="team-social">
 												<a href="#"><i className="fa fa-facebook"></i></a>
 												<a href="#"><i className="fa fa-google-plus"></i></a>
 												<a href="#"><i className="fa fa-twitter"></i></a>
 											</div>
-										</div>
+										</div> */}
 									</div>
 									<div className="team-content">
-										<h3>John Doe</h3>
-										<span>Web Designer</span>
+										<h3>John Stamp</h3>
+										<span>CTO</span>
 									</div>
 								</div>
 							</div>
@@ -572,13 +603,13 @@ class App extends React.Component {
 									</div>
 									<div className="blog-content">
 										<ul className="blog-meta">
-											<li><i className="fa fa-user"></i>John doe</li>
-											<li><i className="fa fa-clock-o"></i>18 Oct</li>
+											<li><i className="fa fa-user"></i>Achea Redd</li>
+											<li><i className="fa fa-clock-o"></i>8/26/2019</li>
 											<li><i className="fa fa-comments"></i>57</li>
 										</ul>
-										<h3>Molestie at elementum eu facilisis sed odio</h3>
-										<p>Nec feugiat nisl pretium fusce id velit ut tortor pretium. Nisl purus in mollis nunc sed. Nunc non blandit massa enim nec.</p>
-										<a href="blog-single.html">Read more</a>
+										<h3>How Labels Impacted My Mental Health</h3>
+										<p>All I knew were labels. They dictated how I acted, what I wore, where I went and how I spent my time. Labels come with expectations, most of which are not healthy. I became so caught up in the roles and titles that meeting expectations became more important than the experience  </p>
+										<a href="https://www.nami.org/Blogs/NAMI-Blog/August-2019/How-Labels-Impacted-My-Mental-Health">Read more</a>
 									</div>
 								</div>
 							</div>
@@ -590,13 +621,13 @@ class App extends React.Component {
 									</div>
 									<div className="blog-content">
 										<ul className="blog-meta">
-											<li><i className="fa fa-user"></i>John doe</li>
-											<li><i className="fa fa-clock-o"></i>18 Oct</li>
+											<li><i className="fa fa-user"></i>Aid Veterans </li>
+											<li><i className="fa fa-clock-o"></i> 4/26/2019</li>
 											<li><i className="fa fa-comments"></i>57</li>
 										</ul>
-										<h3>Molestie at elementum eu facilisis sed odio</h3>
-										<p>Nec feugiat nisl pretium fusce id velit ut tortor pretium. Nisl purus in mollis nunc sed. Nunc non blandit massa enim nec.</p>
-										<a href="blog-single.html">Read more</a>
+										<h3>Mental Health and Teens: Watch for Danger Signs</h3>
+										<p>Adolescence isn’t an easy time for parents, either. As children move through the various tumultuous transitions that accompany adolescence — physical, emotional, hormonal, sexual, social, intellectual — the pressures and problems they encounter can all too easily seem overwhelming</p>
+										<a href="https://www.healthychildren.org/English/ages-stages/teen/Pages/Mental-Health-and-Teens-Watch-for-Danger-Signs.aspx">Read more</a>
 									</div>
 								</div>
 							</div>
@@ -608,13 +639,13 @@ class App extends React.Component {
 									</div>
 									<div className="blog-content">
 										<ul className="blog-meta">
-											<li><i className="fa fa-user"></i>John doe</li>
-											<li><i className="fa fa-clock-o"></i>18 Oct</li>
+											<li><i className="fa fa-user"></i>Aid Veterans </li>
+											<li><i className="fa fa-clock-o"></i>822/2019</li>
 											<li><i className="fa fa-comments"></i>57</li>
 										</ul>
-										<h3>Molestie at elementum eu facilisis sed odio</h3>
-										<p>Nec feugiat nisl pretium fusce id velit ut tortor pretium. Nisl purus in mollis nunc sed. Nunc non blandit massa enim nec.</p>
-										<a href="blog-single.html">Read more</a>
+										<h3>New Technology to Aid Veterans Mental Health</h3>
+										<p>Of the 1.7 million veterans who served in Iraq and Afghanistan, it is estimated that 20 percent live with post-traumatic stress disorder or major depression. These conditions can have a significant impact on returning vets’ relationships, and their school or work performance.</p>
+										<a href="https://www.eachmindmatters.org/from-the-front-lines/new-technology-to-aid-veterans-mental-health/">Read more</a>
 									</div>
 								</div>
 							</div>
@@ -638,7 +669,7 @@ class App extends React.Component {
 								<div className="contact">
 									<i className="fa fa-phone"></i>
 									<h3>Phone</h3>
-									<p>512-421-3940</p>
+									<p>617-123-4444</p>
 								</div>
 							</div>
 
@@ -654,7 +685,7 @@ class App extends React.Component {
 								<div className="contact">
 									<i className="fa fa-map-marker"></i>
 									<h3>Address</h3>
-									<p>1739 Bubby Drive</p>
+									<p>1 Brattle RD</p>
 								</div>
 							</div>
 
@@ -684,20 +715,10 @@ class App extends React.Component {
 							<div className="col-md-12">
 
 								<div className="footer-logo">
-									<a href="index.html"><img src="img/newlogo.jpg" alt="logo" /></a>
+									<h1 className="white-text">PRYIA</h1>
 								</div>
 
-								<ul className="footer-follow">
-									<li><a href="#"><i className="fa fa-facebook"></i></a></li>
-									<li><a href="#"><i className="fa fa-twitter"></i></a></li>
-									<li><a href="#"><i className="fa fa-google-plus"></i></a></li>
-									<li><a href="#"><i className="fa fa-instagram"></i></a></li>
-									<li><a href="#"><i className="fa fa-linkedin"></i></a></li>
-									<li><a href="#"><i className="fa fa-youtube"></i></a></li>
-								</ul>
-								<div className="footer-copyright">
-									<p>Copyright © 2019. All Rights Reserved. Designed by </p>
-								</div>
+
 
 							</div>
 
@@ -707,7 +728,7 @@ class App extends React.Component {
 
 				</footer>
 
-				<div id="back-to-top"></div>
+
 
 				<div id="preloader">
 					<div className="preloader">
@@ -721,5 +742,6 @@ class App extends React.Component {
 		);
 	}
 }
+
 
 export default App;
