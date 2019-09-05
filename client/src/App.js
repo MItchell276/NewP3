@@ -226,7 +226,7 @@ class App extends React.Component {
 								<div className="service">
 									<i className="fa fa-diamond"></i>
 									<h3>Google Maps</h3>
-									<p>Locations of Doctors under of umbrella </p>
+									<p>Locations of Doctors under our umbrella that have the same vision </p>
 								</div>
 							</div>
 
@@ -234,15 +234,15 @@ class App extends React.Component {
 								<div className="service">
 									<i className="fa fa-rocket"></i>
 									<h3>Updates </h3>
-									<p>Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero.</p>
+									<p>Change the scope of how you think Mental Health should be supported.</p>
 								</div>
 							</div>
 
 							<div className="col-md-4 col-sm-6">
 								<div className="service">
 									<i className="fa fa-cogs"></i>
-									<h3>Creative Idea</h3>
-									<p>Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero.</p>
+									<h3>Creative Ideas</h3>
+									<p>Always looking outside the box of normal healthcare practices.</p>
 								</div>
 							</div>
 
