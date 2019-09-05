@@ -35,10 +35,10 @@ class App extends React.Component {
 						<div className="container">
 							<div className="navbar-header">
 								<div className="navbar-brand">
-									<a href="index.html">
-										<img className="logo" src="img/holding-hands.png" alt="logo" />
+									{/* <a href="index.html">
+										<img className="logo" src="" alt="logo" />
 
-									</a>
+									</a> */}
 								</div>
 
 								<div className="nav-collapse">
@@ -502,7 +502,7 @@ class App extends React.Component {
 
 				<div id="team" className="section md-padding">
 					<MapApp />
-					<div className="list">
+					{/* <div className="list">
 						<ul>{this.state.results.map(result =>
 							<li>{result.profile.first_name + " " + result.profile.last_name};
 
@@ -510,7 +510,7 @@ class App extends React.Component {
 							</li>)}
 
 						</ul>
-					</div>
+					</div> */}
 
 
 					<div className="container">

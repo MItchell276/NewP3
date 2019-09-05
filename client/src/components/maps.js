@@ -28,18 +28,29 @@ function Map() {
                     }}
                     onClick={(e) => {
                         console.log('doctor')
-                        setSelectDoctor();
+                        setSelectDoctor(doctor);
                     }}
                 />
             ))}
 
             {selectDoctor && (
-                <InfoWindow>
+                <InfoWindow
                     position={{
                         lat: selectDoctor.practices[0].lat,
                         lng: selectDoctor.practices[0].lon
                     }}
-                    <div>doctor details</div>
+                    onCloseClick={() => {
+                        setSelectDoctor(null);
+                    }}
+                >
+                    <div>
+                        <h5>Doctor Info</h5>
+                        <p>{selectDoctor.practices[0].name}</p>
+                        <p> {selectDoctor.specialties[0].description}</p>
+                        <p> {selectDoctor.specialties[0].actor}</p>
+                        {/* <p> {selectDoctor.profile[0].bio}</p> */}
+                        {/* <p>Lon: {selectDoctor.practices[0].lon}</p> */}
+                    </div>
                 </InfoWindow>
 
             )}
